@@ -28,7 +28,7 @@ namespace EmployeeManagement.Web.Pages
                 DateOfBirth = new DateTime(1980, 10, 5),
                 Gender = Gender.Male,
                 Department = new Department { DepartmentId = 1, DepartmentName = "Servers" },
-                PhotoPath = "images/john.png"
+                PhotoPath = "images/john.jpg"
             };
 
             Employee e2 = new Employee
@@ -40,7 +40,7 @@ namespace EmployeeManagement.Web.Pages
                 DateOfBirth = new DateTime(1950, 10, 5),
                 Gender = Gender.Male,
                 Department = new Department { DepartmentId = 1, DepartmentName = "Servers" },
-                PhotoPath = "images/peter.png"
+                PhotoPath = "images/peter.jpg"
             };
 
             Employee e3 = new Employee
@@ -52,7 +52,7 @@ namespace EmployeeManagement.Web.Pages
                 DateOfBirth = new DateTime(1990, 10, 10),
                 Gender = Gender.Female,
                 Department = new Department { DepartmentId = 1, DepartmentName = "Servers" },
-                PhotoPath = "images/selmer.png"
+                PhotoPath = "images/selmer.jpg"
             };
 
             Employee e4 = new Employee
@@ -64,7 +64,7 @@ namespace EmployeeManagement.Web.Pages
                 DateOfBirth = new DateTime(1999, 10, 5),
                 Gender = Gender.Male,
                 Department = new Department { DepartmentId = 1, DepartmentName = "Servers" },
-                PhotoPath = "images/terry.png"
+                PhotoPath = "images/terry.jpg"
             };
 
             Employees = new List<Employee> { e1, e2, e3, e4 };
