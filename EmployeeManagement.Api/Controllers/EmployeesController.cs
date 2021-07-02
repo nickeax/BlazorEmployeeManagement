@@ -52,5 +52,25 @@ namespace EmployeeManagement.Api.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, new { value = e.Message });
             }
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
+        {
+            try
+            {
+                if(employee == null)
+                {
+                    return BadRequest();
+                }
+
+                var createdEmployee = await _employeeRepository.AddEmployee(employee);
+
+                return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.Employeeid }, createdEmployee);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, e.Message);
+            }
+        }
     }
 }
