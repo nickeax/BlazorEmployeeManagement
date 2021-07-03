@@ -80,5 +80,27 @@ namespace EmployeeManagement.Api.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, e.Message);
             }
         }
+
+        [HttpPut("{employeeId:int}")]
+        public async Task<ActionResult<Employee>> UpdateEmployee(int employeeId, Employee employee)
+        {
+            try
+            {
+                if(employeeId != employee.Employeeid)
+                {
+                    return BadRequest("Employee ID mismatch");
+                }
+
+                var employeeToUpdate = await _employeeRepository.GetEmployee(employeeId);
+
+                if (employeeToUpdate == null) return StatusCode(StatusCodes.Status302Found, $"Employee with ID {employeeId} not found.");
+
+                return await _employeeRepository.UpdateEmployee(employee);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new { value = e.Message });
+            }
+        }
     }
 }
