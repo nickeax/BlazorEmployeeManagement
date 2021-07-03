@@ -102,5 +102,18 @@ namespace EmployeeManagement.Api.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest, new { value = e.Message });
             }
         }
+
+        [HttpDelete("{employeeId:int")]
+        public async Task<ActionResult<Employee>> DeleteEmployee(int employeeId)
+        {
+            var employeeToDelete = await _employeeRepository.GetEmployee(employeeId);
+            if (employeeToDelete == null){
+                return BadRequest();
+            }
+
+            _employeeRepository.DeleteEmployee(employeeId);
+
+            return Ok(employeeToDelete);
+        }
     }
 }
